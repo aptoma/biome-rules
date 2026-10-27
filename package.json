@@ -16,16 +16,16 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "git@github.com:aptoma/biome-rules.git"
+		"url": "git+ssh://git@github.com/aptoma/biome-rules.git"
 	},
 	"scripts": {
 		"lint": "biome check .",
 		"typecheck": "tsc",
 		"test": "npm run lint && npm run typecheck && node --test 'test/**/*.test.mts'",
 		"prepublishOnly": "npm test",
-		"release": "npm test && release-it --ci -i patch",
-		"release:minor": "npm test && release-it --ci -i minor",
-		"release:major": "npm test && release-it --ci -i major"
+		"release": "npm test && release-it --ci -i patch && npm publish",
+		"release:minor": "npm test && release-it --ci -i minor && npm publish",
+		"release:major": "npm test && release-it --ci -i major && npm publish"
 	},
 	"engines": {
 		"node": ">=22.18.0"
