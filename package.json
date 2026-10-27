@@ -1,7 +1,7 @@
 {
 	"name": "@aptoma/biome-rules",
 	"author": "Martin Jonsson <martin@aptoma.com>",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"description": "Biome JS lint plugins that keep TypeScript types honest",
 	"type": "module",
 	"exports": {
