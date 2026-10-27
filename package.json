@@ -1,0 +1,46 @@
+{
+	"name": "@aptoma/biome-rules",
+	"author": "Martin Jonsson <martin@aptoma.com>",
+	"version": "0.1.0",
+	"description": "Biome JS lint plugins that keep TypeScript types honest",
+	"type": "module",
+	"exports": {
+		"./recommended": "./recommended.jsonc",
+		"./rules/*": "./rules/*"
+	},
+	"files": [
+		"recommended.jsonc",
+		"rules",
+		"shared",
+		"LICENSE"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:aptoma/biome-rules.git"
+	},
+	"scripts": {
+		"lint": "biome check .",
+		"typecheck": "tsc",
+		"test": "npm run lint && npm run typecheck && node --test 'test/**/*.test.mts'",
+		"prepublishOnly": "npm test",
+		"release": "npm test && release-it -n -i patch",
+		"release:minor": "npm test && release-it -n -i minor",
+		"release:major": "npm test && release-it -n -i major"
+	},
+	"engines": {
+		"node": ">=22.18.0"
+	},
+	"license": "MIT",
+	"peerDependencies": {
+		"@biomejs/biome": ">=2.6.3"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.6.3",
+		"@biomejs/runtime": "2.6.3",
+		"@types/node": "^26.6.5",
+		"auto-changelog": "^2.7.0",
+		"expect": "^30.5.2",
+		"release-it": "^21.1.1",
+		"typescript": "^7.0.2"
+	}
+}

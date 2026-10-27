@@ -1,0 +1,49 @@
+{
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"plugins": [
+		{
+			"path": "./rules/no-chained-type-assertions.ts",
+			"includes": ["**", "!**/*.test.*", "!**/test/**"]
+		},
+		"./rules/no-widen-then-assert.ts",
+		"./rules/no-object-parameters.ts",
+		"./rules/no-unknown-returns.ts",
+		"./rules/no-known-value-widening.ts"
+	],
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab",
+		"lineWidth": 120
+	},
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"preset": "recommended",
+			"correctness": {
+				"noUnusedImports": "error"
+			},
+			"suspicious": {
+				"noFocusedTests": "error"
+			}
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single",
+			"bracketSpacing": false,
+			"trailingCommas": "none"
+		}
+	}
+}
