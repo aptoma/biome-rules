@@ -8,6 +8,8 @@
 		"./node_modules/@aptoma/biome-rules/rules/no-widen-then-assert.ts",
 		"./node_modules/@aptoma/biome-rules/rules/no-object-parameters.ts",
 		"./node_modules/@aptoma/biome-rules/rules/no-unknown-returns.ts",
-		"./node_modules/@aptoma/biome-rules/rules/no-known-value-widening.ts"
+		"./node_modules/@aptoma/biome-rules/rules/no-known-value-widening.ts",
+		"./node_modules/@aptoma/biome-rules/rules/no-mock-module.ts",
+		"./node_modules/@aptoma/biome-rules/rules/no-mongo-mocks.ts"
 	]
 }

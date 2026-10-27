@@ -8,7 +8,9 @@
 		"./rules/no-widen-then-assert.ts",
 		"./rules/no-object-parameters.ts",
 		"./rules/no-unknown-returns.ts",
-		"./rules/no-known-value-widening.ts"
+		"./rules/no-known-value-widening.ts",
+		"./rules/no-mock-module.ts",
+		"./rules/no-mongo-mocks.ts"
 	],
 	"vcs": {
 		"enabled": true,
