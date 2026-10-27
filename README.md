@@ -13,6 +13,8 @@ Requires `@biomejs/biome` 2.6.3 or newer.
 | `noObjectParameters`      | Function parameters typed as the broad `object` type                                                 |
 | `noUnknownReturns`        | Functions that return `unknown` instead of a parsed type                                             |
 | `noKnownValueWidening`    | Explicit annotations that widen a known value, such as an anonymous object type on an object literal |
+| `noMockModule`            | Module mocks via `mock.module()` or `t.mock.module()`                                                |
+| `noMongoMocks`            | `mock.method()` on MongoDB collection methods such as `find`, `findOne`, or `updateOne`              |
 
 ## Usage
 
