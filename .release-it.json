@@ -5,6 +5,6 @@
 		"changelog": "auto-changelog --stdout --commit-limit false -u --template https://raw.githubusercontent.com/release-it/release-it/master/templates/changelog-compact.hbs"
 	},
 	"hooks": {
-		"after:bump": "auto-changelog -p"
+		"after:bump": "auto-changelog -p --template https://amp-public-files-euc1.s3.eu-central-1.amazonaws.com/auto-changelog/changelog.hbs"
 	}
 }

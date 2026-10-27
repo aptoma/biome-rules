@@ -23,14 +23,17 @@
 		"typecheck": "tsc",
 		"test": "npm run lint && npm run typecheck && node --test 'test/**/*.test.mts'",
 		"prepublishOnly": "npm test",
-		"release": "npm test && release-it -n -i patch",
-		"release:minor": "npm test && release-it -n -i minor",
-		"release:major": "npm test && release-it -n -i major"
+		"release": "npm test && release-it --ci -i patch",
+		"release:minor": "npm test && release-it --ci -i minor",
+		"release:major": "npm test && release-it --ci -i major"
 	},
 	"engines": {
 		"node": ">=22.18.0"
 	},
 	"license": "MIT",
+	"publishConfig": {
+		"access": "public"
+	},
 	"peerDependencies": {
 		"@biomejs/biome": ">=2.6.3"
 	},
