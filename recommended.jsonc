@@ -1,5 +1,4 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.6.3/schema.json",
 	"plugins": [
 		{
 			"path": "./node_modules/@aptoma/biome-rules/rules/no-chained-type-assertions.ts",
