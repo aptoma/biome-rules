@@ -1,5 +1,9 @@
 ### Changelog
 
+#### [0.3.1](https://github.com/aptoma/biome-rules/compare/0.3.0...0.3.1) 2026-11-02
+
+- fix: drop $schema from recommended preset [`beb0a61`](https://github.com/aptoma/biome-rules/commit/beb0a61cc6d147c727a9f8f581b7ccf199b6a390)
+
 #### [0.3.0](https://github.com/aptoma/biome-rules/compare/0.2.0...0.3.0) 2026-10-27
 
 - feat: add noMockModule and noMongoMocks rules [`ae07b09`](https://github.com/aptoma/biome-rules/commit/ae07b0983b73f251e32ca76b7225f5e18c12ec7c)
