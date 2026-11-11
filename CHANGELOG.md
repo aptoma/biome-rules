@@ -1,5 +1,9 @@
 ### Changelog
 
+#### [0.4.0](https://github.com/aptoma/biome-rules/compare/0.3.1...0.4.0) 2026-11-11
+
+- feat: add rules keeping derived types at their owner [`#3`](https://github.com/aptoma/biome-rules/pull/3)
+
 #### [0.3.1](https://github.com/aptoma/biome-rules/compare/0.3.0...0.3.1) 2026-11-02
 
 - fix: drop $schema from recommended preset [`beb0a61`](https://github.com/aptoma/biome-rules/commit/beb0a61cc6d147c727a9f8f581b7ccf199b6a390)
