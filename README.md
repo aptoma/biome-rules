@@ -6,15 +6,17 @@ Requires `@biomejs/biome` 2.6.3 or newer.
 
 ## Rules
 
-| Rule                      | Flags                                                                                                |
-| ------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `noChainedTypeAssertions` | Nested type assertions such as `value as unknown as Foo`                                             |
-| `noWidenThenAssert`       | Local bindings that erase a known type and are later asserted back to a narrower one                 |
-| `noObjectParameters`      | Function parameters typed as the broad `object` type                                                 |
-| `noUnknownReturns`        | Functions that return `unknown` instead of a parsed type                                             |
-| `noKnownValueWidening`    | Explicit annotations that widen a known value, such as an anonymous object type on an object literal |
-| `noMockModule`            | Module mocks via `mock.module()` or `t.mock.module()`                                                |
-| `noMongoMocks`            | `mock.method()` on MongoDB collection methods such as `find`, `findOne`, or `updateOne`              |
+| Rule                        | Flags                                                                                                         |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `noChainedTypeAssertions`   | Nested type assertions such as `value as unknown as Foo`                                                      |
+| `noWidenThenAssert`         | Local bindings that erase a known type and are later asserted back to a narrower one                          |
+| `noObjectParameters`        | Function parameters typed as the broad `object` type                                                          |
+| `noUnknownReturns`          | Functions that return `unknown` instead of a parsed type                                                      |
+| `noKnownValueWidening`      | Explicit annotations that widen a known value, such as an anonymous object type on an object literal          |
+| `noMockModule`              | Module mocks via `mock.module()` or `t.mock.module()`                                                         |
+| `noMongoMocks`              | `mock.method()` on MongoDB collection methods such as `find`, `findOne`, or `updateOne`                       |
+| `noTypeofImportedSignature` | `Parameters`, `InstanceType`, or `ConstructorParameters` of `typeof` an imported value                        |
+| `noExportedDerivedAlias`    | Exported aliases such as `export type User = Awaited<ReturnType<typeof getUser>>` where `getUser` is imported |
 
 ## Usage
 
