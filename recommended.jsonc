@@ -9,6 +9,8 @@
 		"./node_modules/@aptoma/biome-rules/rules/no-unknown-returns.ts",
 		"./node_modules/@aptoma/biome-rules/rules/no-known-value-widening.ts",
 		"./node_modules/@aptoma/biome-rules/rules/no-mock-module.ts",
-		"./node_modules/@aptoma/biome-rules/rules/no-mongo-mocks.ts"
+		"./node_modules/@aptoma/biome-rules/rules/no-mongo-mocks.ts",
+		"./node_modules/@aptoma/biome-rules/rules/no-typeof-imported-signature.ts",
+		"./node_modules/@aptoma/biome-rules/rules/no-exported-derived-alias.ts"
 	]
 }

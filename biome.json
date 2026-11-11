@@ -10,7 +10,9 @@
 		"./rules/no-unknown-returns.ts",
 		"./rules/no-known-value-widening.ts",
 		"./rules/no-mock-module.ts",
-		"./rules/no-mongo-mocks.ts"
+		"./rules/no-mongo-mocks.ts",
+		"./rules/no-typeof-imported-signature.ts",
+		"./rules/no-exported-derived-alias.ts"
 	],
 	"vcs": {
 		"enabled": true,
