@@ -1,5 +1,7 @@
+import type {AnyTsType, SemanticModel} from '@biomejs/runtime/plugin';
 import {defineRule, registerDiagnostic, semantic} from '@biomejs/runtime/plugin';
-import {containsImportedTypeof, globalUtilityName} from '../shared/imported-typeof.ts';
+import {globalUtilityName, isImportedTypeof} from '../shared/imported-typeof.ts';
+import {typeArguments} from '../shared/type-alias-resolution.ts';
 
 const DERIVING_UTILITIES: ReadonlySet<string> = new Set([
 	'Awaited',
@@ -9,16 +11,33 @@ const DERIVING_UTILITIES: ReadonlySet<string> = new Set([
 	'ReturnType'
 ]);
 
+function unwrapParentheses(type: AnyTsType | undefined): AnyTsType | undefined {
+	let current = type;
+	while (current?.kind === 'TS_PARENTHESIZED_TYPE') current = current.ty;
+	return current;
+}
+
+/** Whether a type is a chain of deriving utilities ending in `typeof` an import: `Awaited<ReturnType<typeof f>>`. */
+function derivesFromImport(type: AnyTsType | undefined, model: SemanticModel): boolean {
+	const unwrapped = unwrapParentheses(type);
+	if (
+		unwrapped?.kind !== 'TS_REFERENCE_TYPE' ||
+		globalUtilityName(unwrapped, model, DERIVING_UTILITIES) === undefined
+	) {
+		return false;
+	}
+	const argument = unwrapParentheses(typeArguments(unwrapped)[0]);
+	if (argument?.kind === 'TS_TYPEOF_TYPE') return isImportedTypeof(argument, model);
+	return derivesFromImport(argument, model);
+}
+
 /** Ban re-exporting a type derived from an imported value, which makes this module a second owner of that type. */
 export const noExportedDerivedAlias = defineRule({
 	query: semantic('TS_TYPE_ALIAS_DECLARATION'),
 	run(node, context) {
 		const name = node.bindingIdentifier;
-		const type = node.ty;
-		if (name?.kind !== 'TS_IDENTIFIER_BINDING' || type?.kind !== 'TS_REFERENCE_TYPE') return;
-		if (context.model.asBinding(name)?.isExported() !== true) return;
-		if (globalUtilityName(type, context.model, DERIVING_UTILITIES) === undefined) return;
-		if (!containsImportedTypeof(type, context.model)) return;
+		if (name?.kind !== 'TS_IDENTIFIER_BINDING' || context.model.asBinding(name)?.isExported() !== true) return;
+		if (!derivesFromImport(node.ty, context.model)) return;
 
 		registerDiagnostic(
 			name,

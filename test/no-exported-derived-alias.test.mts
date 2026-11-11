@@ -15,6 +15,10 @@ testRule('no-exported-derived-alias.ts', {
 			code: "import * as pre from './pre.ts';\nexport type Route = {Pres: {user: Awaited<ReturnType<typeof pre.getUser>>}};"
 		},
 		{
+			name: 'imported signature inside the utility argument',
+			code: "import {getUser} from './users.ts';\nexport type Route = Awaited<{load: typeof getUser}>;"
+		},
+		{
 			name: 'other top-level utility',
 			code: "import {getUser} from './users.ts';\nexport type User = Partial<ReturnType<typeof getUser>>;"
 		},
@@ -34,6 +38,11 @@ testRule('no-exported-derived-alias.ts', {
 			errors: 1
 		},
 		{code: "import {getUser} from './users.ts';\nexport type User = ReturnType<typeof getUser>;", errors: 1},
+		{
+			name: 'parenthesized',
+			code: "import {getUser} from './users.ts';\nexport type User = (NonNullable<(ReturnType<typeof getUser>)>);",
+			errors: 1
+		},
 		{
 			name: 'aliased import',
 			code: "import {getUser as load} from './users.ts';\nexport type User = NonNullable<Awaited<ReturnType<typeof load>>>;",

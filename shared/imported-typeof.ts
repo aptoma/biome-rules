@@ -1,5 +1,4 @@
 import type {
-	AnyJsAstNode,
 	AnyTsName,
 	JsDeclarationKind,
 	JsReferenceIdentifier,
@@ -36,12 +35,6 @@ export function isImportedTypeof(type: TsTypeofType, model: SemanticModel): bool
 	const root = rootIdentifier(type.expressionName);
 	if (root?.kind !== 'JS_REFERENCE_IDENTIFIER') return false;
 	return model.binding(root)?.isImported() === true && !isShadowedByLocalValue(root, model);
-}
-
-/** Whether a node is or contains a `typeof` query of an imported value. */
-export function containsImportedTypeof(node: AnyJsAstNode, model: SemanticModel): boolean {
-	if (node.kind === 'TS_TYPEOF_TYPE' && isImportedTypeof(node, model)) return true;
-	return node.children().some((child) => containsImportedTypeof(child, model));
 }
 
 /** The name of a reference to one of the given global utility types, unless a local declaration shadows it. */
